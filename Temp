@@ -1,0 +1,50 @@
+#file handling
+import os
+
+print("Select an option..")
+print("1. Create File")
+print("2. Read File")
+print("3. Write File")
+print("4. Append File")
+print("5. Remove File")
+
+option =int(input("Select From Above: "))
+if option==1 or option==2 or option==3 or option==4 or option==5:
+    fpath= input("Enter file path with extension: ")
+#fname=input("Enter file name: ")
+#fpath="F:\\sem5\\python\\progs\\"+fname
+
+#Create
+if option==1:
+    if os.path.exists(fpath):
+        print("File Already Exists")
+    else:
+        fo= open(fpath,"x")
+        print("File Created")
+#Read
+elif option==2:
+    if os.path.exists(fpath):
+        fo= open(fpath,"r")
+        print(fo.read())
+    else:
+        print("File Does Not Exists")
+#Write
+elif option==3:
+    fo=open(fpath,"w")
+    fo.write(input("Enter the text to be written in file: "))
+
+#Append
+elif option==4:
+    fo=open(fpath,"a")
+    fo.write(input("Enter the text to be appended in file: "))
+
+#Remove
+elif option==5:
+    if os.path.exists(fpath):
+        os.remove(fpath)
+        print("File Removed Successfully")
+    else:
+        print("File Not Found")
+
+else:
+    print("INVALID INPUT")
